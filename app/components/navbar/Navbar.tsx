@@ -1,3 +1,5 @@
+'use client'
+
 import Container from '../Container'
 import Logo from './Logo'
 import Search from './Search'
@@ -10,6 +12,7 @@ const Navbar = () => {
                     <div className='flex items-cente justify-between gap-3 md:gap-0'>
                         <Logo />
                         <Search />
+                        <UserMenu />
                     </div>
                 </Container>
             </div>
