@@ -3,10 +3,15 @@
 import useCountries from '@/app/hooks/useCountries'
 import { SafeUser } from '@/app/types'
 import { IconType } from 'react-icons'
+import Avatar from '../Avatar'
+import CategoryView from './ListingCategory'
+import dynamic from 'next/dynamic'
+
+const Map = dynamic(() => import('../Map'))
 
 interface ListingInfoProps {
     user: SafeUser
-    descritpion: string
+    description: string
     guestCount: number
     roomCount: number
     bathroomCount: number
@@ -22,7 +27,7 @@ interface ListingInfoProps {
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
     user,
-    descritpion,
+    description,
     guestCount,
     roomCount,
     bathroomCount,
@@ -31,15 +36,41 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
 }) => {
     const { getByValue } = useCountries()
 
-    const coordinated = getByValue(locationValue)?.latlng
+    const coordinates = getByValue(locationValue)?.latlng
 
     return (
         <div className='col-span-4 flex flex-col gap-8'>
             <div className='flex flex-col gap-2'>
                 <div className='text-xl font-semibold flex items-center gap-2'>
                     <div>Hosted by {user?.name}</div>
+                    <Avatar src={user?.image} />
+                </div>
+                <div className='flex items-center gap-4 font-light text-neutral-500'>
+                    <div>
+                        {guestCount} guests
+                    </div>
+                    <div>
+                        {roomCount} room
+                    </div>
+                    <div>
+                        {bathroomCount} bathrooms
+                    </div>
                 </div>
             </div>
+            <hr />
+            {category && (
+                <CategoryView
+                    icon={category.icon}
+                    label={category.label}
+                    description={category.dscription}
+                 />
+            )}
+            <hr />
+            <div className='text-lg font-light text-neutral-500'>
+                
+            </div>
+            <hr />
+            <Map center={coordinates} />
         </div>
     )
 }
