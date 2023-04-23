@@ -9,35 +9,33 @@ import LoginModal from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 
 export const metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb Clone',
+    title: 'Airbnb',
+    description: 'Airbnb Clone',
 }
 
 const font = Nunito({
-  subsets: ["latin"],
+    subsets: ['latin'],
 })
 
 export default async function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  const currentUser = await getCurrentUser()
-  return (
-    <html lang="en">
-      <body className={font.className}>
-        <ClientOnly>
-          <ToasterProvider />
-          <RentModal />
-          <LoginModal />
-          <RegisterModal />
-          <Navbar currentUser={currentUser } />
-        </ClientOnly>
-        <div className='pb-20 pt-28'>
-          {children}
-        </div>
-        {children}
-        </body>
-    </html>
-  )
+    const currentUser = await getCurrentUser()
+    return (
+        <html lang="en">
+            <body className={font.className}>
+                <ClientOnly>
+                    <ToasterProvider />
+                    <RentModal />
+                    <LoginModal />
+                    <RegisterModal />
+                    <Navbar currentUser={currentUser} />
+                </ClientOnly>
+                <div className="pb-20 pt-28">{children}</div>
+                {children}
+            </body>
+        </html>
+    )
 }
