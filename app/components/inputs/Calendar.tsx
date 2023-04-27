@@ -4,13 +4,13 @@ import { DateRange, Range, RangeKeyDict } from "react-date-range";
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 
-interface CalendarProps {
+interface DatePickerProps {
     value: Range
     onChange: (value: RangeKeyDict) => void
     disabledDates?: Date[]
 }
 
-const Calendar: React.FC<CalendarProps> = ({ value, onChange, disabledDates }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ value, onChange, disabledDates }) => {
   return (
     <DateRange
         rangeColors={['#262626']}
@@ -25,4 +25,4 @@ const Calendar: React.FC<CalendarProps> = ({ value, onChange, disabledDates }) =
   )
 };
 
-export default Calendar;
+export default DatePicker;

@@ -6,6 +6,7 @@ import { IconType } from 'react-icons'
 import Avatar from '../Avatar'
 import CategoryView from './ListingCategory'
 import dynamic from 'next/dynamic'
+import ListingCategory from './ListingCategory'
 
 const Map = dynamic(() => import('../Map'))
 
@@ -53,14 +54,14 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             </div>
             <hr />
             {category && (
-                <CategoryView
+                <ListingCategory
                     icon={category.icon}
-                    label={category.label}
-                    description={category.description}
+                    label={category?.label}
+                    description={category?.description}
                 />
             )}
             <hr />
-            <div className="text-lg font-light text-neutral-500"></div>
+            <div className="text-lg font-light text-neutral-500">{description}</div>
             <hr />
             <Map center={coordinates} />
         </div>

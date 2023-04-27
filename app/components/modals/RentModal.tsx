@@ -7,7 +7,7 @@ import CountrySelect from '../inputs/CountrySelect'
 import { useMemo, useState } from 'react'
 import { categories } from '../navbar/Categories'
 import CategoryInput from '../inputs/CategoryInput'
-import { FieldValues, useForm } from 'react-hook-form'
+import { FieldValues, useForm, SubmitHandler } from 'react-hook-form'
 import dynamic from 'next/dynamic'
 import Counter from '../inputs/Counter'
 import ImageUpload from '../inputs/ImageUpload'
@@ -43,9 +43,9 @@ const RentModal = () => {
         defaultValues: {
             category: '',
             location: null,
-            geustCount: 1,
+            guestCount: 1,
             roomCount: 1,
-            bathroomCound: 1,
+            bathroomCount: 1,
             imageSrc: '',
             price: 1,
             title: '',
@@ -77,7 +77,7 @@ const RentModal = () => {
     }
 
     const onBack = () => {
-        setStep((value) => value + 1)
+        setStep((value) => value - 1)
     }
     const onNext = () => {
         setStep((value) => value + 1)
@@ -195,7 +195,7 @@ const RentModal = () => {
             <div className="flex flex-col gap-8">
                 <Heading
                     title="Add a photo of your place"
-                    subtitle="WShow guests what your place looks like!"
+                    subtitle="Show guests what your place looks like!"
                 />
                 <ImageUpload
                     value={imageSrc}

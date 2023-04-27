@@ -25,7 +25,7 @@ const Counter: React.FC<CounterProps> = ({
         }
 
         onChange(value - 1)
-    }, [value, onChange])
+    }, [onChange, value])
 
     return (
         <div className="flex items-center justify-between">
